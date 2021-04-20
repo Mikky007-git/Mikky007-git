@@ -14,33 +14,33 @@ function setup(){
 
 }//////////close setup
 
+
 ///////////////////////////////////////////////////////////////////////////////////////////function draw
 function draw(){
  background(255);
  
 membersRef.set({
   Mikkel: {
-    number: 2,
+    hold: 1,
     age: 17
   },
   
   Frederik: {
-    number: 1,
+    hold: 1,
     age: 17
   },
   
   Rikke: {
-    number: 3,
+    hold: 2,
     age: 16
   },
   
   Viktor: {
-    number: 4,
+    hold: 2,
     age: 18
   }
 });
 }//////////Close draw
-
 
 
 
