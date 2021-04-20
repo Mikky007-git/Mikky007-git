@@ -1,1 +1,83 @@
+var membersRef = firebase.database().ref("/members/");
 
+
+///////////////////////////////////////////////////////////////////////////////////////////function preload
+function preload(){
+
+
+
+}
+///////////////////////////////////////////////////////////////////////////////////////////function setup
+function setup(){
+   createCanvas(640, 480); 
+   
+
+}//////////close setup
+
+///////////////////////////////////////////////////////////////////////////////////////////function draw
+function draw(){
+ background(255);
+ 
+membersRef.set({
+  Mikkel: {
+    number: 2,
+    age: 17
+  },
+  
+  Frederik: {
+    number: 1,
+    age: 17
+  },
+  
+  Rikke: {
+    number: 3,
+    age: 16
+  },
+  
+  Viktor: {
+    number: 4,
+    age: 18
+  }
+});
+}//////////Close draw
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////html
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script language="javascript" type="text/javascript" src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyD_fN8hWInxNztdIUyFouAmYj2GWMce8jA",
+    authDomain: "imran-above-all.firebaseapp.com",
+    databaseURL: "https://imran-above-all-default-rtdb.firebaseio.com",
+    projectId: "imran-above-all",
+    storageBucket: "imran-above-all.appspot.com",
+    messagingSenderId: "913531890083",
+    appId: "1:913531890083:web:5e83b8e2340164a2b5d216"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+  
+  <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
+  <script language="javascript" type="text/javascript" src="libraries/p5.min.js"></script>
+  <script language="javascript" type="text/javascript" src="p5js-temp-firebase_Form8380920093910841688.js"></script>
+  <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
+  
+  <!-- This line removes any default padding and style.
+       You might only need one of these values set. -->
+  <style> body { padding: 0; margin: 0; } </style>
+</head>
+
+<body>
+</body>
+</html>
