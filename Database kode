@@ -1,63 +1,100 @@
-var membersRef = firebase.database().ref("/members/");
+var database = firebase.database();
+var membersRef = firebase.database().ref("/Deltagere/");
+var teamsRef = firebase.database().ref("/Hold/");
+//var frederikRef = firebase.database().ref("Deltagere/Frederik");//////////Update specicif section
+var ref = database.ref("/Deltagere/");
+ref.on("value", gotData, errData);
+var button;
+var textInput;
+var textInput2;
+var textInput3;
+var enterButton;
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////function gotData
+function gotData(data){
+  
+  //var holdlistning = selectAll(".Holdlistning");
+  //for (var i = 0; i < holdlistning.length; i++){
+    //holdlistning[i].remove();
+  //}
+  
+  
+  console.log(data.val());
+  var Deltagere = data.val();
+  //var keys = Object.keys(Deltagere);
+  var keys = Object.keys(Deltagere);
+  //console.log(keys);
+  for (var i = 0; i < keys.length; i++) {
+    var k = keys [i];
+    //var Navn = Deltagere[k].Navn;
+    //var Hold = Deltagere[k].Hold;
+    //console.log(Navn, Hold);
+    var li = createElement("li", " ");
+    var ahref = createA("#", key);
+    ahref.mousePressed(visHoldliste);
+    ahref.parent(li);
+    li.class("Holdlistning");
+    li.parent("Holdliste");
+  }
+}////////////////////////////////Close gotData
+
+///////////////////////////////////////////////////////////////////////////////////////////function errData
+function errData(err){
+  console.log("Error!");
+  console.log(err);
+}////////////////////////////Close errData
+///////////////////////////////////////////////////////////////////////////////////////////function visHoldliste
+function visHoldliste(){
+  var key = this.html();
+ 
+  var ref = database.ref("/Deltagere/" + key);
+  ref.on("value", etHold, errData);
+  
+  
+  
+}////////////////////////////////////////close visHoldliste
+
+
+function etHold(data) {
+  var hold = data.val();
+  console.log(hold);
+   
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////function preload
 function preload(){
+}///////////////////////////////////Close preload
+
+function submitData(){
+var data = {
+    Navn: textInput.value(),
+    Hold: textInput2.value(),
+    Alder: textInput3.value()
+  };/////////close data
+  console.log(data);
+  var ref = database.ref("/Deltagere/");
+  ref.push(data);
+}///////////////////////close submitScore
 
 
 
-}
 ///////////////////////////////////////////////////////////////////////////////////////////function setup
 function setup(){
-   createCanvas(640, 480); 
-   
-
+  createCanvas(640, 480); 
+   textInput = createInput("Navn");
+   textInput2 = createInput("Hold");
+   textInput3 = createInput("Alder");
+   enterButton = createButton("enter");
+   enterButton.mousePressed(submitData);
 }//////////close setup
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////function draw
 function draw(){
  background(255);
- 
-membersRef.set({
-  Mikkel: {
-    hold: 1,
-    age: 17
-  },
-  
-  Frederik: {
-    hold: 1,
-    age: 17
-  },
-  
-  Rikke: {
-    hold: 2,
-    age: 16
-  },
-  
-  Viktor: {
-    hold: 2,
-    age: 18
-  }
-});
+
+
 }//////////Close draw
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////script
-
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyD_fN8hWInxNztdIUyFouAmYj2GWMce8jA",
-    authDomain: "imran-above-all.firebaseapp.com",
-    databaseURL: "https://imran-above-all-default-rtdb.firebaseio.com",
-    projectId: "imran-above-all",
-    storageBucket: "imran-above-all.appspot.com",
-    messagingSenderId: "913531890083",
-    appId: "1:913531890083:web:5e83b8e2340164a2b5d216"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script>
-  
